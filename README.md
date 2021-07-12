@@ -1,3 +1,6 @@
+
+
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
@@ -28,6 +31,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#video-guide">Video Guide</a></li>
         <li><a href="#timeline">Timeline</a></li>
         <li><a href="#flow-chart">Flow Chart</a></li>
         <li><a href="#built-with">Built With</a></li>
@@ -51,6 +55,10 @@
 ## About The Project
 
 This a video confressing web application made as part of Microsoft Engage Mentorship Program 2021
+
+### Video Guide
+https://user-images.githubusercontent.com/65270459/125264832-d8767580-e321-11eb-8ce5-9c6027adf5ee.mp4
+
 
 ### Timeline
 
