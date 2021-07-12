@@ -13,7 +13,7 @@
   <p align="center">
     Microsoft Teams Clone as a part of Microsoft Engage Program
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template" ><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/raghavkh2710/ms-teams/blob/main/Engage_Raghav.pdf" ><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://vimeo.com/573896838">View Video</a>
@@ -88,7 +88,7 @@ To get a local copy up and running follow these simple example steps.
 1. Get a free API Key at [https://console.developers.google.com/](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/raghavkh2710/ms-teams
    ```
 3. Install NPM packages
    ```sh
@@ -109,7 +109,7 @@ To get a local copy up and running follow these simple example steps.
 
 This web application allows user to have a convinient video conversation.
 
-_For User Manual, please refer to the [User Manual](https://example.com)_
+_For User Manual, please refer to the [User Manual](https://github.com/raghavkh2710/ms-teams/blob/main/Engage_Raghav.pdf)_
 
 <!-- CONTACT -->
 
@@ -117,7 +117,7 @@ _For User Manual, please refer to the [User Manual](https://example.com)_
 
 Raghav Khandelwal - raghavkhandelwal2710@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [Link](https://github.com/raghavkh2710/ms-teams)
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -131,5 +131,5 @@ Secondly I would also like to thank Chaitanya Mathur and my friends who helped m
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/raghav-khandelwal-2000/
-[timeline]: images/timeline.jpg
-[flowchart]: images/flowdiagram.jpg
+[timeline]: https://github.com/raghavkh2710/ms-teams/blob/main/images/timeline.JPG
+[flowchart]: https://github.com/raghavkh2710/ms-teams/blob/main/images/flowdiagram.JPG
