@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MS TEAMS</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/1200px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+
+    <meta property="og:type" content="app-webrtc" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon.png"
+    />
+    <!-- MSTeams css -->
+    <link rel="stylesheet" href="/css/client.css" />
+    <!-- whiteboard css -->
+    <link rel="stylesheet" href="/css/whiteboard.css" />
+    <!-- https://animate.style 4 swal fadeIn-Out -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+
+  <body onload="initPeer('<%= user.name %>', '<%=user.picture %>')">
+    <!-- show this before to join -->
+    <div id="loadingDiv">
+      <h1>Loading...</h1>
+      <pre>
+Please allow camera & microphone
+access to use this app.
+      </pre>
+    </div>
+
+    <!-- Start left buttons 
+    https://fontawesome.com/icons?d=gallery
+    -->
+
+    <div id="leftButtons" class="w-100 fixed-bottom">
+      <div>
+        <button id="shareRoomBtn" class="bi-share-fill"></button>
+      </div>
+      <button
+        class="button-control fas fa-sync-alt"
+        id="swapCameraBtn"
+      ></button>
+
+      <div>
+        <button class="button-control bi-mic-fill" id="audioBtn"></button>
+        <button
+          class="button-control bi-camera-video-fill"
+          id="videoBtn"
+        ></button>
+        <button
+          class="button-control bi-laptop-fill"
+          id="screenShareBtn"
+        ></button>
+        <button
+          class="button-control fas fa-hand-paper"
+          id="myHandBtn"
+        ></button>
+        <button
+          class="button-control bi-telephone-x-fill"
+          id="leaveRoomBtn"
+        ></button>
+      </div>
+
+      <div>
+        <button class="button-control bi-gear-fill" id="mySettingsBtn"></button>
+        <button class="button-control bi-chat-fill" id="chatRoomBtn"></button>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- End left buttons -->
+    <section id="msgerDraggable" class="msger-draggable" style="z-index: 100">
+      <section id="msger" class="msger">
+        <header id="msgerHeader" class="msger-header">
+          <div style="font-weight: bold !important" class="msger-header-title">
+            <i class="fas fa-comment-alt"></i> Chat
+          </div>
+          <div class="msger-header-options">
+            <button id="msgerClean" class="fas fa-trash"></button>
+            <button id="msgerSaveBtn" class="fas fa-save"></button>
+            <button id="msgerClose" class="fas fa-times"></button>
+          </div>
+        </header>
+
+        <!-- public messages example -->
+        <main id="msgerChat" class="msger-chat"></main>
+
+        <div class="msger-inputarea">
+          <input
+            id="msgerInput"
+            class="msger-input"
+            type="text"
+            placeholder="Enter your message..."
+          />
+          <button id="msgerSendBtn" class="fas fa-paper-plane"></button>
+        </div>
+      </section>
+    </section>
+    <!-- End chat room -->
+
+    <!-- Start my settings -->
+    <section id="mySettings">
+      <header id="mySettingsHeader">
+        <button id="mySettingsCloseBtn" class="fas fa-times"></button>
+      </header>
+      <main>
+        <br />
+        <div>
+          <label>Room actions:&nbsp;</label>
+
+          <button
+            style="width: 152px"
+            id="muteEveryoneBtn"
+            class="button-control bi-mic-mute-fill"
+          >
+            Mute everyone
+          </button>
+          <button
+            style="width: 152px"
+            id="hideEveryoneBtn"
+            class="button-control bi-camera-video-off-fill"
+          >
+            Hide everyone
+          </button>
+          <button
+            style="width: 152px"
+            class="button-control bi-filter-square"
+            id="whiteboardBtn"
+          >
+            Whiteboard
+          </button>
+          <br />
+          <button
+            style="width: 152px"
+            class="button-control bi-folder2"
+            id="fileShareBtn"
+          >
+            File Sharing
+          </button>
+
+          <button
+            style="width: 152px"
+            class="button-control bi-record-circle-fill"
+            id="recordStreamBtn"
+          >
+            Click to Record
+          </button>
+
+          <button
+            style="width: 152px"
+            class="button-control bi-arrows-fullscreen"
+            id="fullScreenBtn"
+          >
+            FullScreen
+          </button>
+        </div>
+        <br />
+
+        <div>
+          <label for="audioSource">Audio input:&nbsp;</label>
+          <select id="audioSource"></select>
+        </div>
+        <br />
+        <div>
+          <label for="audioOutput">Audio output:&nbsp;</label>
+          <select id="audioOutput"></select>
+        </div>
+        <br />
+        <div>
+          <label for="videoSource">Video source:&nbsp;</label>
+          <select id="videoSource"></select>
+        </div>
+        <br />
+        <br />
+      </main>
+    </section>
+    <!-- End my settings -->
+
+    <!-- Start whiteboard -->
+    <div class="whiteboard-cont">
+      <div class="colors-cont">
+        <button id="whiteboardCloseBtn" class="fas fa-times"></button>
+        <button id="whiteboardFsBtn" class="bi-arrows-fullscreen"></button>
+        <div>
+          <input
+            type="color"
+            id="whiteboardColorPicker"
+            onchange="setColor(value)"
+          />
+        </div>
+        <br />
+
+        <div class="white" onclick="setColor('#ffffff')"></div>
+        <div class="red" onclick="setColor('#e74c3c')"></div>
+        <div class="yellow" onclick="setColor('#f1c40f')"></div>
+        <div class="green" onclick="setColor('#badc58')"></div>
+        <div class="blue" onclick="setColor('#3498db')"></div>
+        <div class="orange" onclick="setColor('#e67e22')"></div>
+        <div class="purple" onclick="setColor('#9b59b6')"></div>
+        <div class="pink" onclick="setColor('#fd79a8')"></div>
+        <div class="brown" onclick="setColor('#834c32')"></div>
+        <div class="grey" onclick="setColor('#afadad')"></div>
+        <button id="whiteboardEraserBtn" class="fas fa-eraser"></button>
+        <button id="whiteboardSaveBtn" class="fas fa-save"></button>
+        <button id="whiteboardCleanBtn" class="fas fa-trash"></button>
+      </div>
+      <canvas id="whiteboard"></canvas>
+    </div>
+    <!-- End whiteboard -->
+
+    <!-- Start File Send -->
+    <div id="sendFileDiv">
+      <div id="sendFileInfo"></div>
+      <div id="sendFilePercentage"></div>
+      <progress id="sendProgress" max="0" value="0"></progress>
+      <button id="sendAbortBtn" class="fas fa-stop-circle">&nbsp;Abort</button>
+    </div>
+    <!-- End File Send -->
+    <script
+      src="https://kit.fontawesome.com/d2f1016e6f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://cdn.rawgit.com/muaz-khan/DetectRTC/master/DetectRTC.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/1200px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="1098686719230-8f15jlef2joiv3shbnpbovro4j2qathv.apps.googleusercontent.com"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Login</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/loginEjs.css" />
+  </head>
+  <body>
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+    </script>
+
+    <script>
+      function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/login");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          console.log("Signed in as: " + xhr.responseText);
+          if (xhr.responseText == "success") {
+            signOut();
+            location.assign("/dashboard");
+          }
+        };
+        xhr.send(JSON.stringify({ token: id_token }));
+      }
+    </script>
+
+    <body class="has-animations bg-light" style="height: 100%">
+      <div class="body-wrap" style="height: 100%">
+        <div>
+          <!-- nav bar -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/1200px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png"
+                width="40px"
+                style="padding-right: 10px"
+              />
+            </div>
+          </nav>
+        </div>
+
+        <div>
+          <div class="container" style="height: 100%">
+            <div class="jumbotron">
+              <div class="container-s" style="display: flex; margin-top: 120px">
+                <div class="cards-container container">
+                  <h1 style="color: #4b53bc; margin-bottom: 3px">
+                    Microsoft Teams
+                  </h1>
+
+                  <h1 style="margin-bottom: 10px; font-weight: 400">
+                    Meet, chat, call, and collaborate in just one place.
+                  </h1>
+                  <div>
+                    <div
+                      class="col-md-6 col-12 col-sm-12 d-flex"
+                      style="flex: 1"
+                    >
+                      <div
+                        style="width: 75%; margin-top: 40px"
+                        class="card create-meet"
+                      >
+                        <div class="card-body">
+                          <h5
+                            style="padding-bottom: 10px"
+                            class="card-title display-6"
+                          >
+                            Get Started
+                          </h5>
+
+                          <div class="form-group-desktop">
+                            <div
+                              class="g-signin2 btn-lg"
+                              data-onsuccess="onSignIn"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <img
+                    style="width: 100% !important; height: auto"
+                    src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RWDeEK?ver=e1e6&q=90&m=2&h=768&w=1024&b=%23FFFFFFFF&aim=true"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p
+          class="footer"
+          style="
+            text-align: center;
+            padding-bottom: 2rem;
+            padding-top: 2rem;
+            color: black;
+          "
+        >
+          Made by Raghav Khandelwal
+        </p>
+      </footer>
+
+      <script src="js/newroom.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </body>
+</html>

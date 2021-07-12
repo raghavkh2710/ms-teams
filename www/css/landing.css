@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:600|Lato:400&display=swap");
+
+html {
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.1px;
+}
+
+body,
+button {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 481px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.container {
+  max-width: 1128px;
+}
+
+.button {
+  display: inline-flex;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  padding: 12px 31px;
+  height: 48px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  color: #6a6f82;
+  background-color: #f9faff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 2px;
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: inherit;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.button-primary {
+  color: #f9faff;
+  background-color: #376df9;
+}
+
+.button-primary:hover {
+  background-color: #4678f9;
+}
+
+.button-primary.is-loading::after {
+  border-color: #f9faff;
+}
+
+@media (max-width: 640px) {
+  .button-wide-mobile {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.split-wrap {
+  margin-top: -24px;
+}
+
+.split-wrap .split-item {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.split-wrap .split-item {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 821px) {
+  .container .split-wrap .split-item .split-item-content {
+    width: 488px;
+  }
+}
+
+@media (min-width: 641px) {
+  .section-inner {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
